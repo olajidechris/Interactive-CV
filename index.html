@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Olajide - Interactive CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chosen Palette: Warm Neutrals with Subtle Accents -->
+    <!-- Application Structure Plan: The SPA is structured as a personal portfolio website. It begins with a prominent header containing the name and contact info, followed by a professional summary. The main content is divided into logical, interactive sections: Skills (with a visual chart), Experience (as a vertical timeline), and Education/Certifications. This structure is more engaging than a linear document, allowing users to quickly navigate to the sections most relevant to them. The interactive timeline and skills chart are chosen to make the data (experience and skills) more digestible and visually appealing, which is ideal for a data analyst profile. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Skills list -> Goal: Compare proficiency -> Viz/Presentation: Radar Chart (Chart.js) -> Interaction: Hover for details -> Justification: A radar chart provides a multi-dimensional view of skills, making it easy to see strengths across different categories at a glance. It's more engaging than a static list.
+        - Report Info: Work History -> Goal: Show change/progression -> Viz/Presentation: Vertical Timeline (HTML/CSS/Tailwind) -> Interaction: None, focuses on clear chronological flow -> Justification: A timeline visually represents career progression, which is a key story in a CV. It's intuitive and easy to follow.
+        - Report Info: Education/Certs -> Goal: Inform -> Viz/Presentation: Card-based layout -> Interaction: None -> Justification: Cards cleanly separate and organize distinct qualifications, making them easy to read.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="antialiased">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-6xl">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Christopher Olajide</h1>
+            <p class="text-xl text-gray-600 mt-2">Data Analyst & IT Consultant</p>
+            <div class="flex justify-center items-center space-x-4 mt-4 text-sm text-gray-500">
+                <span>+2348028622826</span>
+                <span class="text-gray-300">|</span>
+                <a href="mailto:olajidechris@gmail.com" class="hover:text-gray-800">olajidechris@gmail.com</a>
+                <span class="text-gray-300">|</span>
+                <a href="https://www.linkedin.com/in/christopher-olajide" target="_blank" class="hover:text-gray-800">LinkedIn</a>
+                 <span class="text-gray-300">|</span>
+                <a href="https://www.quora.com/profile/Olajide-Christopher/" target="_blank" class="hover:text-gray-800">Quora</a>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="flex justify-center mb-12 bg-white/70 backdrop-blur-sm sticky top-4 z-10 p-2 rounded-full shadow-sm w-fit mx-auto">
+            <a href="#summary" class="nav-link px-4 py-2 rounded-full text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors">Summary</a>
+            <a href="#skills" class="nav-link px-4 py-2 rounded-full text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors">Skills</a>
+            <a href="#experience" class="nav-link px-4 py-2 rounded-full text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors">Experience</a>
+            <a href="#education" class="nav-link px-4 py-2 rounded-full text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors">Education</a>
+        </nav>
+
+        <main>
+            <!-- Summary Section -->
+            <section id="summary" class="mb-16 scroll-mt-24">
+                 <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Professional Summary</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        A curious and analytical professional with over 8.5 years of experience in IT, management consulting, and data interpretation. Eager to apply a proven knowledge of business analysis, data quality management, and system development to the Data Analyst Internship at Mayerfeld Consulting. Committed to leveraging strong analytical skills and a proactive mindset to contribute to data-driven initiatives and support Mayerfeld Consulting's mission of designing and implementing forward-thinking strategies for a diverse range of clients.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Skills Section -->
+            <section id="skills" class="mb-16 scroll-mt-24">
+                 <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Core Competencies</h2>
+                    <p class="text-center text-gray-500 mb-8">This chart visualizes my key skill areas. The further a point is from the center, the higher my proficiency in that area. It provides a quick overview of my strengths in analysis, technical tools, and collaborative work.</p>
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="mb-16 scroll-mt-24">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Career Timeline</h2>
+                <div class="relative pl-8 border-l-2 border-gray-200">
+                    <!-- Experience Item -->
+                    <div class="timeline-item mb-12">
+                        <h3 class="text-xl font-semibold text-gray-900">Intern (Data Analysis Focus)</h3>
+                        <p class="text-md font-medium text-gray-600">HNG12 (on MenuSwift) | Remote</p>
+                        <p class="text-sm text-gray-500 mb-4">Feb 2025 – Present</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Performed data-driven keyword analysis and research to identify trends and assess traffic potential for the MenuSwift project.</li>
+                            <li>Assisted in generating and mapping keywords for landing pages to improve SEO performance.</li>
+                            <li>Utilized tools like Semrush and Google Ads for keyword data extraction and analysis.</li>
+                        </ul>
+                    </div>
+                     <!-- Experience Item -->
+                    <div class="timeline-item mb-12">
+                        <h3 class="text-xl font-semibold text-gray-900">IT and Management Consultant</h3>
+                        <p class="text-md font-medium text-gray-600">Keynote Konsult Ltd | Nigeria</p>
+                        <p class="text-sm text-gray-500 mb-4">Sep 2018 – Jun 2023</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Queried databases for data quality, identifying over 2000 errors, with 98% subsequently resolved.</li>
+                            <li>Analyzed IT, pension, and government data, performed cost-benefit analyses, and developed reports.</li>
+                            <li>Trained users on new equipment and software applications.</li>
+                             <li>Analyzed 5+ pieces of legislation to ensure company compliance with federal law.</li>
+                        </ul>
+                    </div>
+                    <!-- Experience Item -->
+                     <div class="timeline-item mb-12">
+                        <h3 class="text-xl font-semibold text-gray-900">IT Consultant</h3>
+                        <p class="text-md font-medium text-gray-600">Keynote Konsult Ltd | Nigeria</p>
+                        <p class="text-sm text-gray-500 mb-4">Sep 2017 – Sep 2018</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                             <li>Provided logistical support to 4 teams in different geographic locations.</li>
+                             <li>Set up, tested, and troubleshot over 100 computers and other pieces of equipment.</li>
+                             <li>Maintained computer networks and computing environments with over 70% uptime.</li>
+                        </ul>
+                    </div>
+                     <!-- Experience Item -->
+                    <div class="timeline-item mb-12">
+                        <h3 class="text-xl font-semibold text-gray-900">Copy Editor and Proofreader</h3>
+                        <p class="text-md font-medium text-gray-600">Smile Editing | Freelance</p>
+                        <p class="text-sm text-gray-500 mb-4">Feb 2016 – Present</p>
+                         <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Demonstrated meticulous attention to detail and language proficiency through editing and proofreading tasks.</li>
+                        </ul>
+                    </div>
+                    <!-- Experience Item -->
+                     <div class="timeline-item">
+                        <h3 class="text-xl font-semibold text-gray-900">TV Production Intern</h3>
+                        <p class="text-md font-medium text-gray-600">WazobiaMax TV | Abuja</p>
+                        <p class="text-sm text-gray-500 mb-4">Sep 2017 – Aug 2018</p>
+                         <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Researched topics for 10+ productions using various sources.</li>
+                            <li>Mixed and edited audio and subtitling for over 30 productions.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Education & Certifications Section -->
+            <section id="education" class="scroll-mt-24">
+                 <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Education & Certifications</h2>
+                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Education Card -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="text-lg font-semibold text-gray-900">Bachelor of Science, Computer Science</h3>
+                        <p class="text-gray-600">Goldsmiths, University of London</p>
+                        <p class="text-sm text-gray-500">2020-2022</p>
+                    </div>
+                     <!-- Education Card -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="text-lg font-semibold text-gray-900">MicroMasters Program in Analytics</h3>
+                        <p class="text-gray-600">Georgia Institute of Technology</p>
+                        <p class="text-sm text-gray-500">2019</p>
+                    </div>
+                     <!-- Education Card -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="text-lg font-semibold text-gray-900">Bachelor of Science, Electrical Engineering</h3>
+                        <p class="text-gray-600">University of Lagos</p>
+                        <p class="text-sm text-gray-500">2008-2016</p>
+                    </div>
+                     <!-- Certification Card -->
+                     <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 md:col-span-3 lg:col-span-3">
+                         <h3 class="text-lg font-semibold text-gray-900 mb-3">Relevant Certifications (Georgia Tech)</h3>
+                         <div class="flex flex-wrap gap-2">
+                            <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Data Analytics in Business</span>
+                            <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Computing for Data Analysis</span>
+                             <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Probability - The Science of Uncertainty and Data</span>
+                         </div>
+                     </div>
+                 </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-16 py-6 border-t border-gray-200">
+            <p class="text-sm text-gray-500">&copy; 2025 Christopher Olajide. Interactive CV generated dynamically.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
